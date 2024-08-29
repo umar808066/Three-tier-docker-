@@ -10,7 +10,7 @@ RUN go build -o main .
 
 FROM ubuntu:latest
 WORKDIR /root/
-COPY --from=builder /backend/main .
+COPY --from=builder /usr/local/go/src/employees/main .
 EXPOSE 5432 8080
 
 CMD ["./main"]
