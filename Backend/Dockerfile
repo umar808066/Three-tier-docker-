@@ -10,9 +10,9 @@ RUN apt update && \
     apt install unzip openjdk-11-jdk -y && \
     unzip apache-tomcat-9.0.93.zip
 
-COPY student.war /opt/apache-tomcat-9.0.93/webapps
+ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/student.war /opt/apache-tomcat-9.0.93/webapps/
 
-COPY mysql-connector.jar /opt/apache-tomcat-9.0.93/lib
+ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/mysql-connector.jar /opt/apache-tomcat-9.0.93/lib/mysql-connector.jar
 
 COPY context.xml  /opt/apache-tomcat-9.0.93/conf/
 
