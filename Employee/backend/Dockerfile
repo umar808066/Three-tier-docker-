@@ -2,7 +2,7 @@
 FROM golang:1.20 AS builder
 
 # Set the Current Working Directory inside the container
-WORKDIR /app
+WORKDIR /backend
 
 # Copy Go Modules manifests
 COPY go.mod go.sum ./
@@ -24,10 +24,10 @@ RUN apt-get update && \
     apt-get install -y \
 
 # Set the Current Working Directory inside the container
-WORKDIR /app
+WORKDIR /backend
 
 # Copy the binary from the builder stage
-COPY --from=builder /app/myapp .
+COPY --from=builder /backend/myapp .
 
 # Expose the port the application will run on
 EXPOSE 8080
