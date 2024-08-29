@@ -14,7 +14,7 @@ COPY student.war /opt/apache-tomcat-9.0.93/webapps
 
 COPY mysql-connector.jar /opt/apache-tomcat-9.0.93/lib
 
-COPY context.xml  /opt/apache-tomcat-9.0.93/conf/context.xml
+COPY context.xml  /opt/apache-tomcat-9.0.93/conf/
 
 RUN chmod +rwx /opt/apache-tomcat-9.0.93/bin/*.sh
 
