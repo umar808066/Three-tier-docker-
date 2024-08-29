@@ -1,9 +1,10 @@
-# Use the official Go image
+# Stage 1: Build the Go application
 FROM golang:1.20 AS builder
 
 # Set the Current Working Directory inside the container
-WORKDIR /employee/backend
-# Copy go mod and sum files
+WORKDIR /app
+
+# Copy Go Modules manifests
 COPY go.mod go.sum ./
 
 # Download all dependencies. Dependencies will be cached if the go.mod and go.sum files are not changed
@@ -12,23 +13,24 @@ RUN go mod download
 # Copy the source code into the container
 COPY . .
 
-# Build the Go app
-RUN go build -o main .
+# Build the Go application
+RUN go build -o myapp .
 
-# Start a new stage from scratch
-FROM alpine:latest  
+# Stage 2: Create a minimal image to run the application
+FROM ubuntu:latest
 
-# Install ca-certificates for SSL/TLS
-RUN apk --no-cache add ca-certificates
+# Install necessary packages
+RUN apt-get update && \
+    apt-get install -y \
 
 # Set the Current Working Directory inside the container
-WORKDIR /root/
+WORKDIR /app
 
-# Copy the Pre-built binary file from the previous stage
-COPY --from=builder /root/main .
+# Copy the binary from the builder stage
+COPY --from=builder /app/myapp .
 
-# Expose port 8080 to the outside world
+# Expose the port the application will run on
 EXPOSE 8080
 
 # Command to run the executable
-CMD ["./main"]
+CMD ["./myapp"]
