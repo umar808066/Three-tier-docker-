@@ -1,18 +1,34 @@
+# Use the official Go image
 FROM golang:1.20 AS builder
-WORKDIR /backend
+
+# Set the Current Working Directory inside the container
+WORKDIR /employee/backend
+# Copy go mod and sum files
 COPY go.mod go.sum ./
+
+# Download all dependencies. Dependencies will be cached if the go.mod and go.sum files are not changed
 RUN go mod download
-COPY ./controller /usr/local/go/src/employees
-COPY ./model /usr/local/go/src/employees
-COPY ./repository /usr/local/go/src/employees
-COPY ./service /usr/local/go/src/employees
-RUN go build -o main /backend
 
-FROM ubuntu:latest
+# Copy the source code into the container
+COPY . .
+
+# Build the Go app
+RUN go build -o main .
+
+# Start a new stage from scratch
+FROM alpine:latest  
+
+# Install ca-certificates for SSL/TLS
+RUN apk --no-cache add ca-certificates
+
+# Set the Current Working Directory inside the container
 WORKDIR /root/
-COPY --from=builder /usr/local/go/src/employees/main .
-EXPOSE 5432 8080
 
+# Copy the Pre-built binary file from the previous stage
+COPY --from=builder /app/main .
+
+# Expose port 8080 to the outside world
+EXPOSE 8080
+
+# Command to run the executable
 CMD ["./main"]
-
-
