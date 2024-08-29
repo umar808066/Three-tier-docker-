@@ -6,7 +6,7 @@ COPY ./controller /usr/local/go/src/employees
 COPY ./model /usr/local/go/src/employees
 COPY ./repository /usr/local/go/src/employees
 COPY ./service /usr/local/go/src/employees
-RUN go build -o main /usr/local/go/src/employees
+RUN go build -o main /backend
 
 FROM ubuntu:latest
 WORKDIR /root/
