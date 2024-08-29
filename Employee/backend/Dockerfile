@@ -2,12 +2,10 @@ FROM golang:1.20 AS builder
 WORKDIR /backend
 COPY go.mod go.sum ./
 RUN go mod download
-COPY ./controller .
-COPY ./model .
-COPY ./repository .
-COPY ./routes .
-COPY ./service .
-
+COPY ./controller /usr/local/go/src/employees
+COPY ./model /usr/local/go/src/employees
+COPY ./repository /usr/local/go/src/employees
+COPY ./service /usr/local/go/src/employees
 RUN go build -o main .
 
 FROM ubuntu:latest
