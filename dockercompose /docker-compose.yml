@@ -56,7 +56,7 @@ services:          #default synxtax
     network_mode:   #providing network mode
         bridge
 
-    frontendnginxeight:        #naming convention for container
+  frontendnginxeight:        #naming convention for container
     build: /opt/Three-tier-docker-/counter/ #location of the docker file
     ports:     #port mapping my container to host port 
       - '88:80'  
