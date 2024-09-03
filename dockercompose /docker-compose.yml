@@ -7,10 +7,7 @@ services:          #default synxtax
     volumes:   #mounting persistent volume of my host to container
       - myapp:/var/www/html/
     network_mode:   #providing network mode
-        bridge
- 
-volumes:   #creating volume
-  myapp:     
+        bridge   
 
   frontendnginxsecond:        #naming convention for container
     build: /opt/Three-tier-docker-/puppy/ #location of the docker file
@@ -18,13 +15,9 @@ volumes:   #creating volume
       - '81:80'  
     container_name: puppy  #providing name to container
     volumes:   #mounting persistent volume of my host to container
-      - myapp1:/var/www/html/
+      - myapp:/var/www/html/
     network_mode:   #providing network mode
         bridge
- 
-volumes:   #creating volume
-  myapp1:  
-
 
   frontendnginxthird:        #naming convention for container
     build: /opt/Three-tier-docker-/number/ #location of the docker file
@@ -32,13 +25,9 @@ volumes:   #creating volume
       - '82:80'  
     container_name: number  #providing name to container
     volumes:   #mounting persistent volume of my host to container
-      - myapp2:/var/www/html/
+      - myapp:/var/www/html/
     network_mode:   #providing network mode
         bridge
- 
-volumes:   #creating volume
-  myapp2: 
-
 
   frontendnginxfour:        #naming convention for container
     build: /opt/Three-tier-docker-/season/ #location of the docker file
@@ -46,13 +35,9 @@ volumes:   #creating volume
       - '83:80'  
     container_name: season  #providing name to container
     volumes:   #mounting persistent volume of my host to container
-      - myapp3:/var/www/html/
+      - myapp:/var/www/html/
     network_mode:   #providing network mode
         bridge
- 
-volumes:   #creating volume
-  myapp3:  
-
 
   frontendnginxfive:        #naming convention for container
     build: /opt/Three-tier-docker-/amazon/ #location of the docker file
@@ -60,12 +45,9 @@ volumes:   #creating volume
       - '84:80'  
     container_name: amazon  #providing name to container
     volumes:   #mounting persistent volume of my host to container
-      - myapp4:/var/www/html/
+      - myapp:/var/www/html/
     network_mode:   #providing network mode
-        bridge
- 
-volumes:   #creating volume
-  myapp4:  
+        bridge 
 
 
   frontendnginxsix:        #naming convention for container
@@ -74,12 +56,9 @@ volumes:   #creating volume
       - '85:80'  
     container_name: traffic  #providing name to container
     volumes:   #mounting persistent volume of my host to container
-      - myapp5:/var/www/html/
+      - myapp:/var/www/html/
     network_mode:   #providing network mode
         bridge
- 
-volumes:   #creating volume
-  myapp5:
 
   frontendnginxseven:        #naming convention for container
     build: /opt/Three-tier-docker-/VR/ #location of the docker file
@@ -87,13 +66,9 @@ volumes:   #creating volume
       - '86:80'  
     container_name: VR  #providing name to container
     volumes:   #mounting persistent volume of my host to container
-      - myapp6:/var/www/html/
+      - myapp:/var/www/html/
     network_mode:   #providing network mode
         bridge
- 
-volumes:   #creating volume
-  myapp6:    
-
 
     frontendnginxeight:        #naming convention for container
     build: /opt/Three-tier-docker-/counter/ #location of the docker file
@@ -101,9 +76,9 @@ volumes:   #creating volume
       - '87:80'  
     container_name: counter  #providing name to container
     volumes:   #mounting persistent volume of my host to container
-      - myapp7:/var/www/html/
+      - myapp:/var/www/html/
     network_mode:   #providing network mode
         bridge
  
 volumes:   #creating volume
-  myapp7:    
+  myapp:    
