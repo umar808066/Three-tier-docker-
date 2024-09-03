@@ -12,9 +12,7 @@ services:          #default synxtax
 volumes:   #creating volume
   myapp:     
 
-
-services:          #default synxtax
-  frontendnginxfirst:        #naming convention for container
+  frontendnginxsecond:        #naming convention for container
     build: /opt/Three-tier-docker-/puppy/ #location of the docker file
     ports:     #port mapping my container to host port 
       - '81:80'  
@@ -28,8 +26,7 @@ volumes:   #creating volume
   myapp:  
 
 
-services:          #default synxtax
-  frontendnginxfirst:        #naming convention for container
+  frontendnginxthird:        #naming convention for container
     build: /opt/Three-tier-docker-/number/ #location of the docker file
     ports:     #port mapping my container to host port 
       - '82:80'  
@@ -43,9 +40,7 @@ volumes:   #creating volume
   myapp: 
 
 
-
-services:          #default synxtax
-  frontendnginxfirst:        #naming convention for container
+  frontendnginxfour:        #naming convention for container
     build: /opt/Three-tier-docker-/season/ #location of the docker file
     ports:     #port mapping my container to host port 
       - '83:80'  
@@ -59,8 +54,7 @@ volumes:   #creating volume
   myapp:  
 
 
-services:          #default synxtax
-  frontendnginxfirst:        #naming convention for container
+  frontendnginxfive:        #naming convention for container
     build: /opt/Three-tier-docker-/amazon/ #location of the docker file
     ports:     #port mapping my container to host port 
       - '84:80'  
@@ -74,8 +68,7 @@ volumes:   #creating volume
   myapp:  
 
 
-services:          #default synxtax
-  frontendnginxfirst:        #naming convention for container
+  frontendnginxsix:        #naming convention for container
     build: /opt/Three-tier-docker-/traffic/ #location of the docker file
     ports:     #port mapping my container to host port 
       - '85:80'  
@@ -88,12 +81,25 @@ services:          #default synxtax
 volumes:   #creating volume
   myapp:
 
-services:          #default synxtax
-  frontendnginxfirst:        #naming convention for container
+  frontendnginxseven:        #naming convention for container
     build: /opt/Three-tier-docker-/VR/ #location of the docker file
     ports:     #port mapping my container to host port 
       - '86:80'  
     container_name: VR  #providing name to container
+    volumes:   #mounting persistent volume of my host to container
+      - myapp:/var/www/html/
+    network_mode:   #providing network mode
+        bridge
+ 
+volumes:   #creating volume
+  myapp:    
+
+
+    frontendnginxeight:        #naming convention for container
+    build: /opt/Three-tier-docker-/counter/ #location of the docker file
+    ports:     #port mapping my container to host port 
+      - '87:80'  
+    container_name: counter  #providing name to container
     volumes:   #mounting persistent volume of my host to container
       - myapp:/var/www/html/
     network_mode:   #providing network mode
