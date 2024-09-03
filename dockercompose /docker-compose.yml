@@ -1,6 +1,6 @@
 services:          #default synxtax
   frontendnginxfirst:        #naming convention for container
-    build: /opt/Three-tier-docker/counter/ #location of the docker file
+    build: /opt/Three-tier-docker-/counter/ #location of the docker file
     ports:     #port mapping my container to host port 
       - '80:80'  
     container_name: nginxfrontendcontfirst  #providing name to container
