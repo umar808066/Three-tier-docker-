@@ -1,5 +1,5 @@
 services:          #default synxtax
-  frontendapache2first:        #naming convention for container
+  frontendnginxfirst:        #naming convention for container
     build: /opt/Three-tier-docker-/TODO/ #location of the docker file
     ports:     #port mapping my container to host port 
       - '80:80'  
